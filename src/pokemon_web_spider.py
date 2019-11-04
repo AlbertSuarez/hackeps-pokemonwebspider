@@ -1,8 +1,40 @@
+import requests
+
+from bs4 import BeautifulSoup
+
 from src import *
 
 
 def _scrape_pokemon():
-    pass
+    # Retrieve PokemonDB HTML
+    response = requests.get(SCRAPE_POKEMON_HTML, verify=False, timeout=15)
+    assert response.ok
+    html_content = response.content
+
+    # Create BS4 object
+    soup = BeautifulSoup(html_content, 'html.parser')
+
+    # Scrape pokedex list
+    pokedex_table = soup.find('table', {'id': 'pokedex'})
+    pokedex_list = pokedex_table.find_all('tr')
+    pokedex_list = pokedex_list[1:]  # Remove header
+
+    # Save data
+    pokedex_result = []
+    for row in pokedex_list:
+        row_type = row.find_all('a', {'class': 'type-icon'})
+        if len(row_type) == SCRAPE_POKEMON_MIN_TYPE:
+            row_img = row.find('span', {'class': 'infocard-cell-img'})
+            row_num = row.find('span', {'class': 'infocard-cell-data'})
+            row_name = row.find('a', {'class': 'ent-name'})
+            pokedex_result.append({
+                'name': row_name.text,
+                'number': row_num.text,
+                'img': row_img.next['data-src'],
+                'type': [row_type[0].text, row_type[1].text]
+            })
+
+    return pokedex_result
 
 
 def _render_template():
