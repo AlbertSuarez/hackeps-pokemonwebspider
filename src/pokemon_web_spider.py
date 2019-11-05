@@ -1,3 +1,4 @@
+import random
 import requests
 
 from bs4 import BeautifulSoup
@@ -34,19 +35,28 @@ def _scrape_pokemon():
                 'type': [row_type[0].text, row_type[1].text]
             })
 
-    return pokedex_result
+    # Ger random values
+    pokedex_team = []
+    for _ in range(0, SCRAPE_POKEMON_AMOUNT):
+        while True:
+            pokedex_item = random.choice(pokedex_result)
+            if all([i for i in pokedex_team if i['type'] != pokedex_item['type']]):
+                pokedex_team.append(pokedex_item)
+                break
+
+    return pokedex_team
 
 
-def _render_template():
+def _render_template(pokedex_team):
     with open(HTML_TEMPLATE_PATH, 'r', encoding='utf-8') as template_html_file:
         template_html_string = template_html_file.read()
 
-    # TODO
+    print(pokedex_team)
 
     with open(HTML_OUTPUT_PATH, 'w', encoding='utf-8') as output_html_file:
         output_html_file.write(template_html_string)
 
 
 def generate():
-    _scrape_pokemon()
-    _render_template()
+    pokedex_team = _scrape_pokemon()
+    _render_template(pokedex_team)
