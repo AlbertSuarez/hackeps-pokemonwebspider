@@ -1,52 +1,70 @@
 body, html {
-    height: 100%;
-    background-color: #eee !important;
+  height: 100%;
+  background-color: #eee !important;
+}
+
+div {
+  font-size: 0.9em;
 }
 
 .page-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: 100%;
-    position: relative;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  position: relative;
+  flex-wrap: wrap;
 }
 
 .card-content {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 #card {
-    padding: 0.5vh;
-    width: 90vh;
-    min-width: 300px;
+  padding: 1vh;
+  width: 55vh;
+}
+
+#card .content {
+  padding: 0.5em 0.5em !important;
+}
+
+#card .column {
+  text-align: center;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 #card img {
-    width: 10vh !important;
-    height: auto;
+  width: 8vh !important;
+  height: auto;
+  margin-top: -1.2em;
 }
 
 .space-padding {
-    padding-top: 2vh;
+  padding-top: 2vh;
 }
 
 .title {
-    text-align: center;
-    font-size: 2.5em !important;
+  text-align: center;
+  font-size: 2em !important;
 }
 
 @media screen and (min-width: 576px) {
 
-    #card {
-        padding: 1vh;
-        width: 120vh;
-    }
+  div {
+    font-size: 1em;
+  }
+
+  #card {
+    padding: 1vh;
+    width: 90vh;
+  }
 
 }
