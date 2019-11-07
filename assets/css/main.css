@@ -1,0 +1,52 @@
+body, html {
+    height: 100%;
+    background-color: #eee !important;
+}
+
+.page-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.card-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+#card {
+    padding: 0.5vh;
+    width: 90vh;
+    min-width: 300px;
+}
+
+#card img {
+    width: 10vh !important;
+    height: auto;
+}
+
+.space-padding {
+    padding-top: 2vh;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5em !important;
+}
+
+@media screen and (min-width: 576px) {
+
+    #card {
+        padding: 1vh;
+        width: 120vh;
+    }
+
+}
