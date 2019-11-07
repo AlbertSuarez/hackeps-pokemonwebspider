@@ -51,7 +51,14 @@ def _render_template(pokedex_team):
     with open(HTML_TEMPLATE_PATH, 'r', encoding='utf-8') as template_html_file:
         template_html_string = template_html_file.read()
 
-    print(pokedex_team)
+    for idx, pokedex_item in enumerate(pokedex_team):
+        print('Number: {}\tName: {}\tType: {}\tImg: {}\t\n'.format(
+            pokedex_item['number'], pokedex_item['name'], pokedex_item['type'], pokedex_item['img'])
+        )
+        template_html_string = template_html_string.replace(f'data.number_{idx + 1}', pokedex_item['number'])
+        template_html_string = template_html_string.replace(f'data.name_{idx + 1}', pokedex_item['name'])
+        template_html_string = template_html_string.replace(f'data.img_{idx + 1}', pokedex_item['img'])
+        template_html_string = template_html_string.replace(f'data.type_{idx + 1}', '/'.join(pokedex_item['type']))
 
     with open(HTML_OUTPUT_PATH, 'w', encoding='utf-8') as output_html_file:
         output_html_file.write(template_html_string)
