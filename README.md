@@ -31,6 +31,8 @@ An HTML must be delivered with the solution to the problem and the code used to 
 
 Open the following [link](https://asuarez.dev/hackeps-pokemonwebspider) to check the HTML result.
 
+![Preview](assets/img/preview.png)
+
 ## Requirements
 
 This project is using Python3.7. Third-party libraries listed in [requirements.lock](requirements.lock).
